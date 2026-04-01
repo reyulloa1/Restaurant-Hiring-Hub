@@ -1,6 +1,5 @@
-import type { ApplicantCreateInput } from "@rh/shared";
+import type { CreateApplicantInput } from '@rh/shared';
 
-export function computeApplicantScore(_applicant: ApplicantCreateInput): number {
-  // Layer 1 placeholder. Real scoring rules are implemented in a later layer.
+export function computeApplicantScore(_applicant: CreateApplicantInput): number {
   return 0;
 }

@@ -1,15 +1,14 @@
-import { config } from "dotenv";
-import { z } from "zod";
+import 'dotenv/config';
 
-config();
+export const env = {
+  port: Number(process.env.PORT ?? 4000),
+  appOrigin: process.env.APP_ORIGIN ?? 'http://localhost:5173',
+  supabaseUrl: process.env.SUPABASE_URL ?? '',
+  supabaseAnonKey: process.env.SUPABASE_ANON_KEY ?? '',
+  supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY ?? '',
+  supabaseJwtSecret: process.env.SUPABASE_JWT_SECRET ?? '',
+};
 
-const envSchema = z.object({
-  PORT: z.coerce.number().default(4000),
-  CLIENT_ORIGIN: z.string().default("http://localhost:5173"),
-  SUPABASE_URL: z.string().url(),
-  SUPABASE_ANON_KEY: z.string().min(1),
-  SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
-  SUPABASE_RESUME_BUCKET: z.string().default("resumes")
-});
-
-export const env = envSchema.parse(process.env);
+for (const [key, value] of Object.entries(env)) {
+  if (value === '') throw new Error(`Missing env var: ${key}`);
+}

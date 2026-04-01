@@ -1,10 +1,10 @@
-import { createClient } from "@supabase/supabase-js";
-import { env } from "./env.js";
+import { createClient } from '@supabase/supabase-js';
+import { env } from './env.js';
 
-export const supabaseAdmin = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY, {
-  auth: { persistSession: false }
+export const supabaseAdmin = createClient(env.supabaseUrl, env.supabaseServiceRoleKey, {
+  auth: { persistSession: false, autoRefreshToken: false },
 });
 
-export const supabaseAuth = createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
-  auth: { persistSession: false }
+export const supabaseAnon = createClient(env.supabaseUrl, env.supabaseAnonKey, {
+  auth: { persistSession: false, autoRefreshToken: false },
 });
