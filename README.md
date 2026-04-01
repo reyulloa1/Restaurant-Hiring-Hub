@@ -1,10 +1,16 @@
-# Restaurant Hiring Hub - Layer 1 Foundation
+# Restaurant Hiring Hub - Layers 1 + 2
 
 ## Structure
-- `client/`: React + TypeScript + Tailwind scaffold only.
-- `server/`: Express API, Supabase integration, auth middleware, applicant routes.
-- `shared/`: shared applicant types.
-- `supabase/migrations/`: schema setup.
+- `client/`: Public applicant UI (landing, role details, apply flow, success page)
+- `server/`: Express API, Supabase integration, auth middleware, applicant routes
+- `shared/`: Shared role config + applicant types
+- `supabase/migrations/`: Database schema setup
+
+## Public Routes
+- `/` landing + role selection
+- `/roles/:roleId` role details
+- `/apply/:roleId` 5-step application flow
+- `/success` post-submit confirmation
 
 ## Run
 1. Copy `.env.example` to `.env`.

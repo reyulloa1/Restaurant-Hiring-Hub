@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
+import { LandingPage } from './pages/LandingPage';
+import { RoleDetailsPage } from './pages/RoleDetailsPage';
+import { ApplyPage } from './pages/ApplyPage';
+import { SuccessPage } from './pages/SuccessPage';
 
-function App() {
-  return <div className="p-6 text-sm text-slate-700">Layer 1 foundation ready. UI will be built in later layers.</div>;
-}
+const router = createBrowserRouter([
+  { path: '/', element: <LandingPage /> },
+  { path: '/roles/:roleId', element: <RoleDetailsPage /> },
+  { path: '/apply/:roleId', element: <ApplyPage /> },
+  { path: '/success', element: <SuccessPage /> },
+  { path: '*', element: <Navigate to="/" replace /> },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 );

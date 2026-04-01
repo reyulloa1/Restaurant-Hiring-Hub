@@ -1,6 +1,15 @@
 import { z } from 'zod';
 
-const jsonRecordSchema = z.record(z.unknown());
+const jsonRecordSchema = z.preprocess((value) => {
+  if (typeof value === 'string') {
+    try {
+      return JSON.parse(value);
+    } catch {
+      return value;
+    }
+  }
+  return value;
+}, z.record(z.unknown()));
 
 export const createApplicantSchema = z.object({
   name: z.string().min(1),
