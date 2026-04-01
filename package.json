@@ -1,6 +1,7 @@
 {
   "name": "restaurant-hiring-hub",
   "private": true,
+<<<<<<< codex/build-mvp-for-restaurant-hiring-hub-qm5gkv
   "version": "0.2.0",
   "workspaces": ["client", "server", "shared"],
   "scripts": {
@@ -9,6 +10,22 @@
     "dev:client": "npm run dev -w client",
     "build": "npm run build -w shared && npm run build -w server && npm run build -w client",
     "typecheck": "npm run typecheck -w shared && npm run typecheck -w server && npm run typecheck -w client"
+=======
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/web",
+    "apps/server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:web\" \"npm:dev:server\"",
+    "dev:web": "npm --workspace apps/web run dev",
+    "dev:server": "npm --workspace apps/server run dev",
+    "build": "npm run build:web && npm run build:server",
+    "build:web": "npm --workspace apps/web run build",
+    "build:server": "npm --workspace apps/server run build",
+    "typecheck": "npm --workspace apps/web run typecheck && npm --workspace apps/server run typecheck",
+    "lint": "npm --workspace apps/web run lint && npm --workspace apps/server run lint"
+>>>>>>> main
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

@@ -1,19 +1,26 @@
-# Restaurant Hiring Hub - Layers 1 + 2
+# Restaurant Hiring Hub (MVP)
 
-## Structure
-- `client/`: Public applicant UI (landing, role details, apply flow, success page)
-- `server/`: Express API, Supabase integration, auth middleware, applicant routes
-- `shared/`: Shared role config + applicant types
-- `supabase/migrations/`: Database schema setup
+Tech stack: React + TypeScript + Tailwind + Node/Express + Supabase.
 
-## Public Routes
-- `/` landing + role selection
-- `/roles/:roleId` role details
-- `/apply/:roleId` 5-step application flow
-- `/success` post-submit confirmation
+## Quick start
 
-## Run
-1. Copy `.env.example` to `.env`.
-2. Apply SQL migration: `supabase/migrations/20260401_layer1_applicants.sql`.
-3. Install deps: `npm install`.
-4. Start: `npm run dev`.
+1. Copy `.env.example` to `.env` and fill Supabase/API keys.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run migration in Supabase SQL editor: `supabase/migrations/20260401_init.sql`.
+4. Run locally:
+   ```bash
+   npm run dev
+   ```
+
+## Phase mapping
+
+1. **App scaffold**: monorepo workspaces with web/server apps.
+2. **Supabase auth/database/storage**: auth magic-link, schema migration, resumes bucket.
+3. **Public applicant flow**: dynamic roles + apply page + resume upload + API submit.
+4. **Admin dashboard**: protected route and application visibility.
+5. **Scoring logic**: weighted score service in API.
+6. **Email templates**: provider-agnostic HTML templates in server service.
+7. **Deployment readiness**: build scripts, env contract, health endpoint, docs.
